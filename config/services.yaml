@@ -1,0 +1,27 @@
+services:
+  Mvo\ContaoTooling\Database\Processor:
+
+  Mvo\ContaoTooling\Command\DatabaseBackupCommand:
+    arguments:
+      - '@Mvo\ContaoTooling\Database\Processor'
+    tags:
+      - 'console.command'
+
+  Mvo\ContaoTooling\Command\DatabaseRestoreCommand:
+    arguments:
+      - '@Mvo\ContaoTooling\Database\Processor'
+    tags:
+      - 'console.command'
+
+  Mvo\ContaoTooling\Command\DatabaseDumpCommand:
+    arguments:
+      - '@database_connection'
+      - '@Mvo\ContaoTooling\Database\Processor'
+    tags:
+      - 'console.command'
+
+  Mvo\ContaoTooling\Command\DatabaseImportCommand:
+    arguments:
+      - '@Mvo\ContaoTooling\Database\Processor'
+    tags:
+      - 'console.command'

@@ -1,0 +1,41 @@
+{
+    "name": "mvo/contao-tooling",
+    "type": "library",
+    "description": "strongly opinionated Contao tooling for shared DB management + deployment",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Moritz Vondano",
+            "email": "m-vo@users.noreply.github.com"
+        }
+    ],
+    "bin": [
+        "bin/simple-dep"
+    ],
+    "require": {
+        "php": ">=7.4",
+        "doctrine/dbal": "^2.12 || ^3.0",
+        "symfony/process": "^4.4 || ^5.2",
+        "symfony/finder": "^4.4 || ^5.2",
+        "symfony/framework-bundle": "^4.4 || ^5.2",
+        "symfony/yaml": "^4.4 || ^5.2",
+        "webmozart/path-util": "^2.3",
+        "deployer/recipes": "^6.2"
+    },
+    "require-dev": {
+        "deployer/deployer": "^6.8",
+        "friendsofphp/php-cs-fixer": "^v2.17",
+        "contao/manager-bundle": "^4.9"
+    },
+    "suggest": {
+        "deployer/deployer": "for automatic deployment"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mvo\\ContaoTooling\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Mvo\\ContaoTooling\\ContaoManager\\Plugin"
+    }
+}
