@@ -94,7 +94,7 @@ class Processor
         $this->runShellCommand(
             [
                 ...$this->mysqlCmd(),
-                '-e', sprintf('"CREATE DATABASE IF NOT EXISTS %s;"', $data['name']),
+                '-e', sprintf('"CREATE DATABASE IF NOT EXISTS \`%s\`;"', $data['name']),
             ],
             $this->getCredentialsEnv()
         );
