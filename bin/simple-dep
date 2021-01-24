@@ -5,6 +5,10 @@
  * Delegate calls to 'dep' and inject deployment configuration.
  */
 
+set_time_limit(0);
+@ini_set('display_startup_errors', '1');
+@ini_set('display_errors', '1');
+
 require getcwd() . '/vendor/autoload.php';
 
 use Symfony\Component\Process\Process;
@@ -19,6 +23,8 @@ $args = [...$args, '-f', $deployFile, '--ansi'];
 
 // Delegate call
 $process = new Process([$binary, ...$args]);
+$process->setTimeout(500);
+
 $process->run(static function ($_, $buffer): void {
     echo $buffer;
 });
