@@ -18,7 +18,14 @@ class Config
 
     public function getIgnoredTables(): array
     {
-        return $this->getConfig()['ignore'] ?? [];
+        $default = [
+            'tl_user',
+        ];
+
+        return array_merge(
+            $default,
+            $this->getConfig()['ignore'] ?? []
+        );
     }
 
     public function getIgnoredData(): array
@@ -33,7 +40,6 @@ class Config
             'tl_search_index',
             'tl_search_term',
             'tl_undo',
-            'tl_user',
             'tl_version',
         ];
 
