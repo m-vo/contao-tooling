@@ -45,7 +45,12 @@ class DatabaseImportCommand extends Command
             ->name('*.sql');
 
         if (!$files->hasResults()) {
-            $io->warning('No dumps found.');
+            $io->warning(
+                sprintf(
+                    "No dumps found in '%s'.",
+                    $config->getDirectory(),
+                )
+            );
 
             return 0;
         }
@@ -62,8 +67,9 @@ class DatabaseImportCommand extends Command
 
         $io->success(
             sprintf(
-                'Process finished: imported %d',
-                $files->count()
+                "Process finished: imported %d dumps from '%s'",
+                $files->count(),
+                $config->getDirectory(),
             )
         );
 
