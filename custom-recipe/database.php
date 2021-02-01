@@ -13,7 +13,7 @@ task('database:backup', static function (): void {
         writeln("\r\033[1A\033[32C … skipped");
     }
 
-    run('{{bin/php}} {{bin/console}} database:backup');
+    run('cd {{release_path}} && {{bin/php}} {{bin/console}} database:backup');
 })->desc('Backup database');
 
 task('database:import', static function (): void {
@@ -21,5 +21,5 @@ task('database:import', static function (): void {
         writeln("\r\033[1A\033[32C … skipped");
     }
 
-    run('{{bin/php}} {{bin/console}} database:import');
+    run('cd {{release_path}} && {{bin/php}} {{bin/console}} database:import');
 })->desc('Import database');
