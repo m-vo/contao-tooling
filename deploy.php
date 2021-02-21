@@ -20,7 +20,7 @@ require 'custom-recipe/server.php';
 // General
 set('git_tty', true);
 set('ssh_multiplexing', true);
-set('keep_releases', 5);
+set('keep_releases', 3);
 set('allow_anonymous_stats', false);
 
 // Environment
