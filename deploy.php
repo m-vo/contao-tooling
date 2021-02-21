@@ -65,6 +65,7 @@ add('rsync', [
         '/var',
         '/vendor',
         '/node_modules',
+        '/tools',
         '/tests',
         '/assets',
         '/system',
