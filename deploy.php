@@ -55,9 +55,11 @@ add('rsync', [
         'tsconfig.json',
         'webpack.config.json',
         'yarn.local',
+        'yarn.lock',
+        'yarn-error.log',
 
         // sources, cache and generated resources
-        '/.database/*.gz.sql',
+        '/.database/*.sql.gz',
         '/config/parameters.yml',
         '/config/parameters.yml.dist',
         '/contao-manager',
