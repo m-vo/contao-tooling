@@ -37,5 +37,5 @@ task('database:dns-migrate', static function (): void {
         return;
     }
 
-    run(sprintf("cd {{release_path}} && {{bin/php}} {{bin/console}} contao:dns-migrate %s", (string)$transformations));
+    run(sprintf('cd {{release_path}} && {{bin/php}} {{bin/console}} contao:dns-migrate %s', (string) $transformations));
 })->desc('Migrate root page DNS entries');
