@@ -27,3 +27,15 @@ task('database:import', static function (): void {
 
     run('cd {{release_path}} && {{bin/php}} {{bin/console}} database:import');
 })->desc('Import database');
+
+task('database:dns-migrate', static function (): void {
+    $transformations = get('dns_migrate', false);
+
+    if (!$transformations) {
+        writeln("\r\033[1A\033[32C … skipped");
+
+        return;
+    }
+
+    run(sprintf("cd {{release_path}} && {{bin/php}} {{bin/console}} contao:dns-migrate %s", (string)$transformations));
+})->desc('Migrate root page DNS entries');

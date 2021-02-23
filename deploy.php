@@ -144,6 +144,7 @@ task('deploy', [
     'contao:migrate',
     'database:migrate',
     'database:import',
+    'database:dns-migrate',
     'maintenance:disable',
 
     // Cleanup
