@@ -48,6 +48,26 @@ class Processor
         );
     }
 
+    public function runFile(string $source): void
+    {
+        $this->ensureDatabaseExists();
+
+        $data = $this->parseDatabaseUrl();
+
+        $current = preg_quote(Path::getDirectory($source), '/');
+
+        $this->runShellCommand(
+            [
+                'cat', $source, '|',
+                'sed -e "s/%CURRENT%/'.$current.'/g" |',
+                ...$this->mysqlCmd(),
+                $data['name'],
+            ],
+            $this->getCredentialsEnv(),
+        );
+    }
+
+
     public function backup(string $targetDirectory): void
     {
         $this->ensureDirectoryExists($targetDirectory);

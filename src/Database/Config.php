@@ -18,35 +18,12 @@ class Config
 
     public function getIgnoredTables(): array
     {
-        $default = [
-            'tl_user',
-        ];
-
-        return array_merge(
-            $default,
-            $this->getConfig()['ignore'] ?? []
-        );
+        return $this->getConfig()['ignore'] ?? [];
     }
 
     public function getIgnoredData(): array
     {
-        $default = [
-            'tl_crawl_queue',
-            'tl_cron_job',
-            'tl_log',
-            'tl_opt_in',
-            'tl_opt_in_related',
-            'tl_search',
-            'tl_search_index',
-            'tl_search_term',
-            'tl_undo',
-            'tl_version',
-        ];
-
-        return array_merge(
-            $default,
-            $this->getConfig()['ignore_data'] ?? []
-        );
+        return $this->getConfig()['ignore_data'] ?? [];
     }
 
     public function getDirectory(): string
@@ -56,8 +33,36 @@ class Config
         return Path::makeAbsolute($directory, getcwd());
     }
 
+    public function getPayloads(): array
+    {
+        $basePath = $this->getDirectory();
+
+        return array_map(
+            static fn(string $path) => Path::join($basePath, $path),
+            $this->getConfig()['payloads'] ?? []
+        );
+    }
+
     private function getConfig(): array
     {
-        return file_exists($this->file) ? (array) Yaml::parseFile($this->file) : [];
+        $default = [
+            'ignore' => [
+                'tl_user',
+            ],
+            'ignore_data' => [
+                'tl_crawl_queue',
+                'tl_cron_job',
+                'tl_log',
+                'tl_opt_in',
+                'tl_opt_in_related',
+                'tl_search',
+                'tl_search_index',
+                'tl_search_term',
+                'tl_undo',
+                'tl_version',
+            ]
+        ];
+
+        return file_exists($this->file) ? (array)Yaml::parseFile($this->file) : $default;
     }
 }

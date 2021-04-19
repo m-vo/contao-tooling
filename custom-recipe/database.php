@@ -39,3 +39,12 @@ task('database:dns-migrate', static function (): void {
 
     run(sprintf('cd {{release_path}} && {{bin/php}} {{bin/console}} contao:dns-migrate %s', (string) $transformations));
 })->desc('Migrate root page DNS entries');
+
+// Payloads
+task('app:compile-payloads', static function (): void {
+    runLocally('symfony php vendor/bin/contao-console app:compile-payloads');
+})->desc('Compile payloads');
+
+task('database:payload-import', static function (): void {
+    run('cd {{release_path}} && {{bin/php}} {{bin/console}} database:payload-import');
+})->desc('Import payloads');

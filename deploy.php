@@ -99,6 +99,7 @@ set('shared_files', [
 
 set('shared_dirs', [
     'assets/images',
+    'assets/maptiles',
     'backup',
     'files',
     'var/logs',
@@ -124,6 +125,7 @@ task('deploy', [
     'contao:validate',
     'encore:build',
     'database:dump',
+    'app:compile-payloads',
 
     // Deploy
     'deploy:info',
@@ -144,6 +146,7 @@ task('deploy', [
     'contao:migrate',
     'database:migrate',
     'database:import',
+    'database:payload-import',
     'database:dns-migrate',
     'maintenance:disable',
 

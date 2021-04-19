@@ -26,6 +26,12 @@ services:
     tags:
       - 'console.command'
 
+  Mvo\ContaoTooling\Command\DatabasePayloadImportCommand:
+    arguments:
+      - '@Mvo\ContaoTooling\Database\Processor'
+    tags:
+      - 'console.command'
+
   Mvo\ContaoTooling\Command\DnsMigrateCommand:
     arguments:
       - '@database_connection'
