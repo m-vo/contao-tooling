@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Deployer;
 
 task('contao:validate', static function (): void {
-    run('./vendor/bin/contao-console contao:version');
+    run('symfony php ./vendor/bin/contao-console contao:version');
 })->desc('Validate local Contao setup')->local();
 
 task('contao:migrate', static function (): void {
