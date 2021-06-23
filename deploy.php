@@ -148,6 +148,7 @@ task('deploy', [
     'database:import',
     'database:payload-import',
     'database:dns-migrate',
+    'install:lock',
     'maintenance:disable',
 
     // Cleanup

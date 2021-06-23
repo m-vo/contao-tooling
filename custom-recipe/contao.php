@@ -19,3 +19,7 @@ task('maintenance:enable', static function (): void {
 task('maintenance:disable', static function (): void {
     run('{{bin/php}} {{bin/console}} lexik:maintenance:unlock {{console_options}}');
 })->desc('Disable maintenance mode');
+
+task('install:lock', static function (): void {
+    run('{{bin/php}} {{bin/console}} contao:install:lock {{console_options}}');
+})->desc('Lock the install tool');
