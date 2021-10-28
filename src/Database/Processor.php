@@ -133,14 +133,28 @@ class Processor
     {
         $data = $this->parseDatabaseUrl();
 
-        return ['/usr/bin/mysql', '-h', $data['host'], '-u', $data['user']];
+        $command = ['/usr/bin/mysql', '-h', $data['host']];
+
+        if($data['user']) {
+            $command[] = '-u';
+            $command[] = $data['user'];
+        }
+
+        return $command;
     }
 
     private function mysqlDumpCmd(): array
     {
         $data = $this->parseDatabaseUrl();
 
-        return ['/usr/bin/mysqldump', '-h', $data['host'], '-u', $data['user']];
+        $command = ['/usr/bin/mysqldump', '-h', $data['host']];
+
+        if($data['user']) {
+            $command[] = '-u';
+            $command[] = $data['user'];
+        }
+
+        return $command;
     }
 
     private function ensureDirectoryExists(string $path): void
