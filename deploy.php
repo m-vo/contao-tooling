@@ -80,6 +80,14 @@ add('rsync', [
         '/web/app.php',
         '/web/index.php',
         '/web/preview.php',
+        '/public/assets',
+        '/public/bundles',
+        '/public/files',
+        '/public/share',
+        '/public/system',
+        '/public/app.php',
+        '/public/index.php',
+        '/public/preview.php',
     ],
 ]);
 
@@ -90,7 +98,7 @@ set('initial_dirs', [
     'backup',
     'system',
     'var',
-    'web',
+    'public',
 ]);
 
 set('shared_files', [
@@ -103,7 +111,6 @@ set('shared_dirs', [
     'backup',
     'files',
     'var/logs',
-    'web/share',
 ]);
 
 set('writable_dirs', [
