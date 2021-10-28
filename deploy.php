@@ -151,7 +151,6 @@ task('deploy', [
     'deploy:restart_fpm',
     'database:backup',
     'contao:migrate',
-    'database:migrate',
     'database:import',
     'database:payload-import',
     'database:dns-migrate',
